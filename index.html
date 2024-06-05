@@ -102,6 +102,89 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    errorBtns[0].addEventListener('click',() => {
+        console.log("Console log demo");
+    });
+
+    errorBtns[1].addEventListener('click', () => {
+      console.error("Console error demo");
+    })
+
+    errorBtns[2].addEventListener('click', () => {
+      console.count("Clicked");
+    })
+    
+    errorBtns[3].addEventListener('click', () => {
+      console.warn('DONT CLICK ME')
+    })
+
+    errorBtns[4].addEventListener('click', () => {
+      let x = 1;
+      let y = 2;
+      const result = '1 + 1 is 2';
+      console.assert( x + x != y, {x, y, result});
+    })
+
+    errorBtns[5].addEventListener('click', () => {
+        console.clear();
+    })
+
+    errorBtns[6].addEventListener('click', (clickEvent) => {
+      console.dir(clickEvent);
+    })
+    
+    errorBtns[7].addEventListener('click', (e) => {
+      console.dirxml(e)
+    })
+
+    errorBtns[8].addEventListener('click', () => {
+      console.group('Test Group')
+    })
+    
+    errorBtns[9].addEventListener('click', () => {
+      console.groupEnd('Test Group')
+    })
+
+    errorBtns[10].addEventListener('click', () => {
+      const test = [
+        {
+          class: "cse110",
+          time: "13 hours"
+        },
+        {
+          class: "cse101",
+          time: "10 hours"
+        },
+        {
+          class: "cse100",
+          time: "2 hours"
+        },
+        {
+          class: "dsc100",
+          time: "2 hours"
+        }
+      ];
+      console.table(test)
+    })
+
+    errorBtns[11].addEventListener('click', () => {
+      console.time('test');
+    })
+
+    errorBtns[12].addEventListener('click', () => {
+      console.timeEnd('test');
+    })
+
+    errorBtns[13].addEventListener('click', () => {
+      const first = () => { second(); };
+      const second = () => { third(); };
+      const third = () => { fourth(); };
+      const fourth = () => { console.trace(); };
+      first();
+    })
+
+
   </script>
 </body>
 
