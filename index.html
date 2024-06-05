@@ -59,7 +59,7 @@
           <option>+</option>
           <option>-</option>
           <option>*</option>
-          <option>/</option>
+          <option>\</option>
         </select>
         <input name="second-num" id="second-num" />
         <button id="calculate">Calculate</button>
@@ -95,14 +95,42 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      let value = 'N/A'
+      try{ 
+        value = calculate(firstNum, secondNum, operator);
+      }catch(err){
+        if( err instanceof ArithmeticError){
+          alert("Invalid Symbol: " + err.message);
+        }else{
+          alert("Unknown Error: " + err.name)
+        }
+      } finally{
+         output.innerHTML = value
+      }
     });
+
+    function calculate(val1, val2, op){
+      if(val1 < 0 || val2 < 0){
+        throw new ArithmeticError('Negative Number exists')
+      }
+      if(isNaN(val2) || isNaN(val1)){
+        throw new ArithmeticError('Invalid Number exists')
+      }
+      return eval(`${val1} ${op} ${val2}`);
+    }
+
+    class ArithmeticError extends Error{
+      constructor(message) {
+        super(message)
+        this.name = "ArithmeticError"
+      } 
+    }
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
     // Start your code here
     // You may move this JS to another file if you wish
-
+    // Part 2 Start
     errorBtns[0].addEventListener('click',() => {
         console.log("Console log demo");
     });
@@ -183,6 +211,11 @@
       const fourth = () => { console.trace(); };
       first();
     })
+    // Part 2 End
+
+    // Part 3 Start
+
+
 
 
   </script>
