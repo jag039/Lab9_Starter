@@ -220,16 +220,18 @@
       const fourth = () => { console.trace(); };
       first();
     })
+
     // Part 2 End
+    window.onerror = function (message, source, lineno, colno, error) {
+        console.log('Global error caught:', message);
+        if (window.TrackJS) {
+            TrackJS.track(message);
+        }
+    };
 
     errorBtns[14].addEventListener('click', ()=> {
-      TrackJS.track('Testing TrackJS!');
-    
-      try {
-        throw new Error()
-      } catch (error) {
-        console.log("ERROR CAUGHT")
-      }
+      let DNE = document.querySelector('#non-existent-element');
+      DNE.click();
     })
 
 
